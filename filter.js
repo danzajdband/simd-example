@@ -1,8 +1,4 @@
 
-if(!window.SIMD) {
-  alert('Your browser does not support SIMD, please download Firefox Nightly!');
-}
-
 var p1data, p2data, ctx1, ctx2; 
 
 function filter() {
@@ -25,14 +21,14 @@ function filter() {
 
     p1 = SIMD.int32x4.fromFloat32x4(p1);
 
-    p1d[i] = p1.x;
-    p1d[i+1] = p1.y;
-    p1d[i+2] = p1.z;
-    p1d[i+3] = p1.w;
+    p1d[i] = p1.x || p1.x_;
+    p1d[i+1] = p1.y || p1.y_;
+    p1d[i+2] = p1.z || p1.z_;
+    p1d[i+3] = p1.w || p1.w_;
   }
 
   var end = Date.now() - now;
-  interval.textContent = `Filter finished in: ${end}ms`;
+  interval.textContent = 'Filter finished in: ' + end + 'ms';
   context.putImageData(p1data, 0, 0);
   p1data = ctx1.getImageData(0, 0, img1.width, img1.height);
 }
