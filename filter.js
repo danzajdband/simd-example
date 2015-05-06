@@ -1,3 +1,8 @@
+
+if(!window.SIMD) {
+  alert('Your browser does not support SIMD, please download Firefox Nightly!');
+}
+
 var p1data, p2data, ctx1, ctx2; 
 
 function filter() {
